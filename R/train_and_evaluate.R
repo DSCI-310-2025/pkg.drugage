@@ -22,9 +22,6 @@
 #' @export
 #'
 train_and_evaluate <- function(model_spec, model_name, data_train, data_test, recipe, output_path) {
-  #library(tidymodels)
-  #library(caret)
-  #delibrary(ggplot2)
   workflow <- workflow() %>%
     add_recipe(recipe) %>%
     add_model(model_spec)
