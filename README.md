@@ -6,7 +6,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of survey.workflow is to …
+The goal of survey.workflow is to package up the functions written in dsci-310-group-07-data-dudes.
 
 ## Installation
 
