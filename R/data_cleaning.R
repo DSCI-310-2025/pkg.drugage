@@ -68,5 +68,5 @@ save_data <- function(data, output_path) {
   if (!dir.exists(dirname(output_path))) {
     dir.create(dirname(output_path), recursive = TRUE)
   }
-  write_csv(data, output_path)
+  readr::write_csv(data, output_path)
 }
