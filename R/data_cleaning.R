@@ -1,51 +1,69 @@
-#' Cleaning and Transforming Data
+#' Drug Use Data Cleaning Functions
 #'
-#' @description These functions clean and transform the drug use dataset to ensure proper data types,
-#' handle missing values, classify age groups, and save processed data.
-#' The functions include:
-#' - `clean_drug_use_data`: Cleans the dataset by converting age to a factor and other values to numeric.
-#' - `classify_age_group`: Categorizes individuals into 'youth' or 'adult' based on age.
-#' - `save_data`: Saves the processed dataset, creating necessary directories if they do not exist.
-#'
-#' @param data A dataframe containing drug use data.
-#' @param output_path A string specifying the file path to save the processed data.
-#'
-#' @return A cleaned and transformed dataframe.
-#'
-#' @import dplyr
-#' @import readr
-#' @export
+#' Functions to clean and transform a drug use dataset:
+#' - `clean_drug_use_data()`: Standardizes variable types and handles missing values
+#' - `classify_age_group()`: Adds 'youth'/'adult' classification
+#' - `save_data()`: Writes processed data to file
 
-#' Cleans the drug use dataset
+
+#' Clean the drug use dataset
 #'
-#' @param data A dataframe containing drug use data.
-#' @return A dataframe with age as a factor and other values converted to numeric.
+#' @param data A data frame that includes an `age` column
+#'
+#' @return A data frame with `age` converted to a factor and other columns to numeric.
+#' @export
+#'
+#' @importFrom dplyr mutate across
+#'
+#' @examples
+#' df <- data.frame(age = c("18", "25"), cocaine = c("0", "-"))
+#' clean_drug_use_data(df)
 clean_drug_use_data <- function(data) {
   data %>%
-    mutate(
+    dplyr::mutate(
       age = factor(age),
-      across(-age, ~ as.numeric(na_if(as.character(.), "-")))
+      dplyr::across(-age, ~ as.numeric(na_if(as.character(.), "-")))
     )
 }
 
-#' Classifies individuals into age groups
+
+#' Classify individuals into age groups
 #'
-#' @param data A dataframe containing drug use data with an age column.
-#' @return A dataframe with an added column `class` indicating 'youth' or 'adult'.
+#' @param data A data frame containing a factor or character `age` column.
+#'
+#' @return A data frame with a new `class` column: 'youth' (≤ 20) or 'adult'.
+#' @export
+#'
+#' @importFrom dplyr mutate select
+#'
+#' @examples
+#' df <- data.frame(age = factor(c("18", "25")))
+#' classify_age_group(df)
 classify_age_group <- function(data) {
   data %>%
-    mutate(
+    dplyr::mutate(
       age_numeric = as.numeric(as.character(age)),
       class = ifelse(!is.na(age_numeric) & age_numeric <= 20, "youth", "adult")
     ) %>%
-    select(-age_numeric)
+    dplyr::select(-age_numeric)
 }
 
-#' Saves processed data to a specified file path
+
+
+#' Save processed data to a file
 #'
-#' @param data A dataframe to be saved.
+#' @param data A data frame to be saved.
 #' @param output_path A string specifying the output file path.
-#' @return None. Saves the data to a file.
+#'
+#' @return Nothing. Saves the data to a file.
+#' @export
+#'
+#' @importFrom readr write_csv
+#'
+#' @examples
+#' \dontrun{
+#' save_data(mtcars, "data/clean/mtcars-cleaned.csv")
+#' }
 save_data <- function(data, output_path) {
   if (!dir.exists(dirname(output_path))) {
     dir.create(dirname(output_path), recursive = TRUE)
