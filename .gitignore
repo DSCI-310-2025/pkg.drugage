@@ -1,6 +1,10 @@
+# R related files
 .Rproj.user
 .Rhistory
 .Rdata
+*.Rproj
+
+# other
 .httr-oauth
 .DS_Store
 .quarto
