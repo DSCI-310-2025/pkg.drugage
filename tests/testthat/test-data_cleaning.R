@@ -1,8 +1,3 @@
-library(testthat)
-library(dplyr)
-library(readr)
-source("R/data_cleaning.R")
-
 test_that("clean_drug_use_data correctly converts values", {
   sample_data <- data.frame(age = c("10", "20", "30"), drug_use = c("5", "-", "10"))
   cleaned <- clean_drug_use_data(sample_data)
