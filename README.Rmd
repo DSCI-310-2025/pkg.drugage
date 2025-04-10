@@ -16,7 +16,8 @@ knitr::opts_chunk$set(
 # survey.workflow
 
 <!-- badges: start -->
-[![codecov](https://codecov.io/gh/DSCI-310-2025/survey.workflow/branch/master/graph/badge.svg)](https://codecov.io/gh/DSCI-310-2025/survey.workflow)
+[![R-CMD-check](https://github.com/DSCI-310-2025/pkg.drugage/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/DSCI-310-2025/pkg.drugage/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/DSCI-310-2025/pkg.drugage/graph/badge.svg)](https://app.codecov.io/gh/DSCI-310-2025/pkg.drugage)
 <!-- badges: end -->
 
 The goal of survey.workflow is to ...
