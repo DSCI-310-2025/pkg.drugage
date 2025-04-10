@@ -18,7 +18,9 @@ Imports:
     readr,
     recipes,
     rsample,
-    workflows
+    workflows,
+    ggplot2,
+    tibble
 Suggests: 
     covr,
     testthat (>= 3.0.0)
