@@ -21,3 +21,17 @@ test_that("save_data creates a file", {
   save_data(sample_data, temp_file)
   expect_true(file.exists(temp_file))
 })
+
+test_that("save_data creates a file and directory if needed", {
+  # Create a temp directory path that doesn't exist yet
+  temp_dir <- tempfile()
+  temp_file <- file.path(temp_dir, "data.csv")
+
+  sample_data <- data.frame(age = factor("10"), class = "youth")
+
+  save_data(sample_data, temp_file)
+
+  expect_true(dir.exists(temp_dir))
+  expect_true(file.exists(temp_file))
+})
+
