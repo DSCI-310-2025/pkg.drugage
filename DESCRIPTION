@@ -18,7 +18,9 @@ Imports:
     readr,
     recipes,
     rsample,
-    workflows
+    workflows,
+    ggplot2,
+    tidyr
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
