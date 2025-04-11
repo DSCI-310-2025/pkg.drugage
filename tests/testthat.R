@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(survey.workflow)
+library(pkg.drugage)
 
-test_check("survey.workflow")
+test_check("pkg.drugage")
