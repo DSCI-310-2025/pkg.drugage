@@ -38,3 +38,15 @@ ggplot objects representing the generated plot
 \description{
 Create and save frequency bar plots
 }
+\examples{
+sample_data <- data.frame(
+ age = c("18-24", "25-34", "35-44"),
+ `alcohol-use` = c(80, 75, 60),
+ `alcohol-frequency` = c(20, 15, 10),
+ `marijuana-use` = c(50, 30, 20),
+ `heroin-frequency` = c(5, 3, 2),
+ class = c("youth", "adult", "adult"),
+ n = c(100, 200, 150)
+)
+create_bar_freq_plot(sample_data, "age", "heroin-frequency", "Median Heroin Use Frequency in the Past Year by Age", "Age", "Median Frequency", "salmon", "output/eda-test/test3.png")
+}

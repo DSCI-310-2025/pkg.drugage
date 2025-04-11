@@ -21,7 +21,8 @@ Imports:
     workflows,
     ggplot2,
     tibble,
-    tidyr
+    tidyr,
+    tidymodels
 Suggests: 
     covr,
     testthat (>= 3.0.0)

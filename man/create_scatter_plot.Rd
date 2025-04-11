@@ -38,3 +38,15 @@ ggplot objects representing the generated plot
 \description{
 Function to create scatter plot with regression line
 }
+\examples{
+sample_data <- data.frame(
+ age = c("18-24", "25-34", "35-44"),
+ `alcohol-use` = c(80, 75, 60),
+ `alcohol-frequency` = c(20, 15, 10),
+ `marijuana-use` = c(50, 30, 20),
+ `heroin-frequency` = c(5, 3, 2),
+ class = c("youth", "adult", "adult"),
+ n = c(100, 200, 150)
+)
+create_scatter_plot(sample_data, "alcohol-frequency", "heroin-frequency", "age", "Relationship Between Alcohol and Heroin Frequency Use", "Alcohol Median Frequency", "Heroin Median Frequency", "output/eda-test/test5.png")
+}
