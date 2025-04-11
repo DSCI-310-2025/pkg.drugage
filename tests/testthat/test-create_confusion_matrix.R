@@ -5,6 +5,7 @@ library(workflows)
 library(dplyr)
 library(caret)
 library(ggplot2)
+library(rsample)
 
 # Generate a random dataset
 set.seed(123)
