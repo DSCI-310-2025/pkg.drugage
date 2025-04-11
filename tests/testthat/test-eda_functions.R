@@ -19,6 +19,10 @@ sample_data <- tibble(
   n = c(100, 200, 150)
 )
 
+if (!dir.exists("output/eda-test")) {
+  dir.create("output/eda-test", recursive = TRUE)
+}
+
 sample_aggregated <- tibble(
   class = c("adult", "adult", "adult", "adult", "adult", "youth", "youth", "youth", "youth", "youth"),
   total_n = c(350, 350, 350, 350, 350, 100, 100, 100, 100, 100),
