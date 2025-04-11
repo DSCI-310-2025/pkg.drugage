@@ -49,12 +49,12 @@ Function to create bar plot for substance use
 \examples{
 sample_data <- data.frame(
  age = c("18-24", "25-34", "35-44"),
- `alcohol-use` = c(80, 75, 60),
- `alcohol-frequency` = c(20, 15, 10),
- `marijuana-use` = c(50, 30, 20),
- `heroin-frequency` = c(5, 3, 2),
+ alcohol.use = c(80, 75, 60),
+ alcohol.frequency = c(20, 15, 10),
+ marijuana.use = c(50, 30, 20),
+ heroin.frequency = c(5, 3, 2),
  class = c("youth", "adult", "adult"),
  n = c(100, 200, 150)
 )
-create_bar_use_plot(sample_data, "age", "alcohol-use", "Alcohol Use", "Age", "Proportion", "dodgerblue", "output/eda-test/test1.png")
+create_bar_use_plot(sample_data, "age", "alcohol.use", "Alcohol Use", "Age", "Proportion", "dodgerblue", "output/eda-test/test1.png")
 }
