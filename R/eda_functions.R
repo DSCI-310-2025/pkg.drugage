@@ -49,9 +49,7 @@ create_bar_use_plot <- function(data, x_var, y_var, title, x_label, y_label, fil
       axis.text.x = element_text(size = 7, angle = 30, hjust = 1),
       axis.text.y = element_text(size = 7)
     )
-  if (!dir.exists(dirname(output_file))) {
-    dir.create(dirname(output_file), recursive = TRUE)
-  }
+  create_directory(dirname(output_file))
   ggsave(output_file, plot = plot, width = 8, height = 6)
   return(plot)
 }
@@ -101,9 +99,7 @@ create_bar_freq_plot <- function(data, x_var, y_var, title, x_label, y_label, fi
       axis.text.x = element_text(size = 7, angle = 30, hjust = 1),
       axis.text.y = element_text(size = 7)
     )
-  if (!dir.exists(dirname(output_file))) {
-    dir.create(dirname(output_file), recursive = TRUE)
-  }
+  create_directory(dirname(output_file))
   ggsave(output_file, plot = plot, width = 8, height = 6)
   return(plot)
 }
@@ -150,9 +146,7 @@ create_scatter_plot <- function(data, x_var, y_var, color_var, title, x_label, y
       axis.text.x = element_text(size = 7, angle = 30, hjust = 1),
       axis.text.y = element_text(size = 7)
     )
-  if (!dir.exists(dirname(output_file))) {
-    dir.create(dirname(output_file), recursive = TRUE)
-  }
+  create_directory(dirname(output_file))
   ggsave(output_file, plot = plot, width = 8, height = 6, dpi = 300)
   return(plot)
 }
@@ -225,9 +219,7 @@ create_grouped_bar_plot <- function(data, title, x_label, y_label, output_file) 
     theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
     scale_fill_manual(values = c("adult" = "darkblue", "youth" = "dodgerblue"),
                       labels = c("adult" = "Adult", "youth" = "Youth"))
-  if (!dir.exists(dirname(output_file))) {
-    dir.create(dirname(output_file), recursive = TRUE)
-  }
+  create_directory(dirname(output_file))
   ggsave(output_file, plot = plot, width = 8, height = 6, dpi = 300)
   return(plot)
 }
