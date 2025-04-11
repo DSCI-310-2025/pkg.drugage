@@ -18,3 +18,9 @@ None. The function downloads the file as a side effect.
 \description{
 Downloads a file from a given URL and saves it to a specified destination.
 }
+\examples{
+test_url <- "https://raw.githubusercontent.com/rudeboybert/fivethirtyeight/master/data-raw/drug-use-by-age/drug-use-by-age.csv"
+test_dir <- "data/test"
+download_data(test_url, test_dir)
+
+}

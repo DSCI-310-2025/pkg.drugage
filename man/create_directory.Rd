@@ -16,3 +16,7 @@ None. The function creates a directory as a side effect.
 Checks if the specified directory exists, and
 creates the directory path if necessary.
 }
+\examples{
+test_dir <- "data/test_dir"
+create_directory(test_dir)
+}

@@ -12,9 +12,9 @@
 #' @export
 #'
 #' @examples
-#' test_url <- "https://raw.githubusercontent.com/vincentarelbundock/Rdatasets/master/datasets.csv
-#' test_destination <- "data/test"
-#' download_data(test_url, test_destination)
+#' test_url <- "https://raw.githubusercontent.com/rudeboybert/fivethirtyeight/master/data-raw/drug-use-by-age/drug-use-by-age.csv"
+#' test_dir <- "data/test"
+#' download_data(test_url, test_dir)
 #'
 download_data <- function(url, destination) {
   create_directory(dirname(destination))
