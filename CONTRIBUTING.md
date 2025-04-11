@@ -21,7 +21,7 @@ This applies to the following **core members of our group**:
 Heidi Lantz, Nazia Edroos, Jessica Luo, and Jade Chen.
 
 If you notice a bug, or have a feature request,
-please open up an issue [here](https://github.com/DSCI-310-2025/dsci-310-group-7-data-dudes/issues).
+please open up an issue [here](https://github.com/DSCI-310-2025/pkg.drugage/issues).
 
 If you'd like to contribute a feature or bug fix,
 you should work in the standard GitHub workflow
@@ -34,9 +34,9 @@ We will review pull requests within 7 days.
 ### For Others
 
 If you notice a bug, or have a feature request,
-please open up an issue [here](https://github.com/DSCI-310-2025/dsci-310-group-7-data-dudes/issues).
+please open up an issue [here](https://github.com/DSCI-310-2025/pkg.drugage/issues).
 
-If you'd like to contribute a feature or bug fix:
+If you'd like to contribute a feature or bug fix, follow these steps:
 
 **How to contribute**
 1. On your GitHub account, fork the package repository.
