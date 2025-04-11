@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# survey.workflow
+# pkg.drugage
 
 <!-- badges: start -->
 
@@ -10,16 +10,16 @@
 coverage](https://codecov.io/gh/DSCI-310-2025/pkg.drugage/graph/badge.svg)](https://app.codecov.io/gh/DSCI-310-2025/pkg.drugage)
 <!-- badges: end -->
 
-The goal of survey.workflow is to …
+The goal of pkg.drugage is to … (NAZ)
 
 ## Installation
 
-You can install the development version of survey.workflow from
+You can install the development version of pkg.drugage from
 [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("pak")
-pak::pak("DSCI-310-2025/survey.workflow")
+pak::pak("DSCI-310-2025/pkg.drugage")
 ```
 
 ## Example
@@ -27,7 +27,7 @@ pak::pak("DSCI-310-2025/survey.workflow")
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
-library(survey.workflow)
+library(pkg.drugage)
 ## basic example code
 ```
 

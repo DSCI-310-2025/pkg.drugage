@@ -13,22 +13,22 @@ knitr::opts_chunk$set(
 )
 ```
 
-# survey.workflow
+# pkg.drugage
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/DSCI-310-2025/pkg.drugage/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/DSCI-310-2025/pkg.drugage/actions/workflows/R-CMD-check.yaml)
 [![Codecov test coverage](https://codecov.io/gh/DSCI-310-2025/pkg.drugage/graph/badge.svg)](https://app.codecov.io/gh/DSCI-310-2025/pkg.drugage)
 <!-- badges: end -->
 
-The goal of survey.workflow is to ...
+The goal of pkg.drugage is to ...
 
 ## Installation
 
-You can install the development version of survey.workflow from [GitHub](https://github.com/) with:
+You can install the development version of pkg.drugage from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("pak")
-pak::pak("DSCI-310-2025/survey.workflow")
+pak::pak("DSCI-310-2025/pkg.drugage")
 ```
 
 ## Example
@@ -36,7 +36,7 @@ pak::pak("DSCI-310-2025/survey.workflow")
 This is a basic example which shows you how to solve a common problem:
 
 ```{r example}
-library(survey.workflow)
+library(pkg.drugage)
 ## basic example code
 ```
 
