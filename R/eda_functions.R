@@ -1,15 +1,16 @@
-#' Using the cleaned data, create some exploratory data analysis plots to gain a better understanding of 
-#' the data.
+#' Drug Use Data EDA Functions:
 #' 
-#' @description These functions create different types of plots based on the scope of certain variables
-#' in the data. The functions include:
-#' - `create_bar_use_plot`: Creates a bar plot for substance use.
-#' - `create_bar_freq_plot`: Creates a bar plot for substance use frequency.
-#' - `create_scatter_plot`: Creates a scatter plot with a regression line.
-#' - `aggregate_data`: Aggregates data for youth vs. adult comparison.
-#' - `create_grouped_bar_plot`: Creates grouped bar plots for youth vs. adult comparison.
+#' Functions to run exploratory data analysis on a drug use dataset:
+#' - `create_bar_use_plot()`: Creates a bar plot for substance use.
+#' - `create_bar_freq_plot()`: Creates a bar plot for substance use frequency.
+#' - `create_scatter_plot()`: Creates a scatter plot with a regression line.
+#' - `aggregate_data()`: Aggregates data for youth vs. adult comparison.
+#' - `create_grouped_bar_plot()`: Creates grouped bar plots for youth vs. adult comparison.
+
+
+#' Function to create bar plot for substance use
 #' 
-#' @param data A .csv dataframe containing data to be plotted or aggregated.
+#' @param data A .csv dataframe containing data to be plotted.
 #' @param x_var A string specifying the x-axis variable.
 #' @param y_var A string specifying the y-axis variable.
 #' @param title A string specifying the plot title.
@@ -17,16 +18,13 @@
 #' @param y_label A string specifying the y-axis label.
 #' @param fill_color A string specifying the fill color for the bars.
 #' @param output_file A string specifying the output file path for saving the plot.
-#' @param color_var A string specifying the color variable for the scatter plot.
 #' 
-#' @return ggplot objects representing the generated plot(s).
+#' @return ggplot objects representing the generated plot
 #' 
 #' @import ggplot2
 #' @import dplyr
-#' @import tidyr
+#' 
 #' @export
-
-# Function to create bar plot for substance use
 create_bar_use_plot <- function(data, x_var, y_var, title, x_label, y_label, fill_color, output_file) {
   plot <- ggplot(data, aes(x = .data[[x_var]], y = .data[[y_var]])) + 
     geom_bar(stat = "identity", width = 0.7, fill = fill_color) + 
@@ -44,7 +42,23 @@ create_bar_use_plot <- function(data, x_var, y_var, title, x_label, y_label, fil
 }
 
 
-# Create and save frequency bar plots
+#' Create and save frequency bar plots
+#' 
+#' @param data A .csv dataframe containing data to be plotted.
+#' @param x_var A string specifying the x-axis variable.
+#' @param y_var A string specifying the y-axis variable.
+#' @param title A string specifying the plot title.
+#' @param x_label A string specifying the x-axis label.
+#' @param y_label A string specifying the y-axis label.
+#' @param fill_color A string specifying the fill color for the bars.
+#' @param output_file A string specifying the output file path for saving the plot.
+#' 
+#' @return ggplot objects representing the generated plot
+#' 
+#' @import ggplot2
+#' @import dplyr
+#' 
+#' @export
 create_bar_freq_plot <- function(data, x_var, y_var, title, x_label, y_label, fill_color, output_file) {
   plot <- ggplot(data, aes(x = .data[[x_var]], y = .data[[y_var]])) + 
     geom_bar(stat = "identity", width = 0.7, fill = fill_color) + 
@@ -64,7 +78,24 @@ create_bar_freq_plot <- function(data, x_var, y_var, title, x_label, y_label, fi
   return(plot)
 }
 
-# Function to create scatter plot with regression line
+
+#' Function to create scatter plot with regression line
+#' 
+#' @param data A .csv dataframe containing data to be plotted.
+#' @param x_var A string specifying the x-axis variable.
+#' @param y_var A string specifying the y-axis variable.
+#' @param title A string specifying the plot title.
+#' @param x_label A string specifying the x-axis label.
+#' @param y_label A string specifying the y-axis label.
+#' @param color_var A string specifying the color variable for the scatter plot.
+#' @param output_file A string specifying the output file path for saving the plot.
+#' 
+#' @return ggplot objects representing the generated plot
+#' 
+#' @import ggplot2
+#' @import dplyr
+#' 
+#' @export
 create_scatter_plot <- function(data, x_var, y_var, color_var, title, x_label, y_label, output_file) {
   plot <- ggplot(data, aes(x = .data[[x_var]], y = .data[[y_var]], color = .data[[color_var]])) +
     geom_point(alpha = 0.8) +
@@ -82,7 +113,17 @@ create_scatter_plot <- function(data, x_var, y_var, color_var, title, x_label, y
 }
 
 
-# Function to aggregate data for youth vs. adult comparison
+#' Function to aggregate data for youth vs. adult comparison
+#' 
+#' @param data A .csv dataframe containing data to be aggregated.
+#' 
+#' @return nothing; but changes the given dataframe.
+#' 
+#' @import ggplot2
+#' @import dplyr
+#' @import tidyr
+#' 
+#' @export
 aggregate_data <- function(data) {
   data %>%
     group_by(class) %>%
@@ -96,7 +137,20 @@ aggregate_data <- function(data) {
 }
 
 
-# Function to create grouped bar plots
+#' Function to create grouped bar plots
+#' 
+#' @param data A .csv dataframe containing data to be plotted or aggregated.
+#' @param title A string specifying the plot title.
+#' @param x_label A string specifying the x-axis label.
+#' @param y_label A string specifying the y-axis label.
+#' @param output_file A string specifying the output file path for saving the plot.
+#' 
+#' @return ggplot objects representing the generated plot.
+#' 
+#' @import ggplot2
+#' @import dplyr
+#' 
+#' @export
 create_grouped_bar_plot <- function(data, title, x_label, y_label, output_file) {
   plot <- ggplot(data, aes(x = .data[["variable"]], y = .data[["value"]], fill = class)) +
     geom_bar(stat = "identity", position = "dodge") +
