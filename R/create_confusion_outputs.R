@@ -12,6 +12,7 @@
 #'
 #' @import ggplot2
 #' @import caret
+#' @import tidymodels
 #' @importFrom tibble as_tibble
 #' @export
 #'
