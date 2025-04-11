@@ -20,7 +20,8 @@ Imports:
     rsample,
     workflows,
     ggplot2,
-    tibble
+    tibble,
+    tidyr
 Suggests: 
     covr,
     testthat (>= 3.0.0)
