@@ -48,5 +48,14 @@ sample_data <- data.frame(
  class = c("youth", "adult", "adult"),
  n = c(100, 200, 150)
 )
-create_bar_freq_plot(sample_data, "age", "heroin.frequency", "Median Heroin Use Frequency in the Past Year by Age", "Age", "Median Frequency", "salmon", "output/eda-test/test3.png")
+create_bar_freq_plot(
+sample_data,
+"age",
+"heroin.frequency",
+"Median Heroin Use Frequency in the Past Year by Age",
+"Age",
+"Median Frequency",
+"salmon",
+"output/eda-test/test3.png"
+)
 }

@@ -48,5 +48,14 @@ sample_data <- data.frame(
  class = c("youth", "adult", "adult"),
  n = c(100, 200, 150)
 )
-create_scatter_plot(sample_data, "alcohol.frequency", "heroin.frequency", "age", "Relationship Between Alcohol and Heroin Frequency Use", "Alcohol Median Frequency", "Heroin Median Frequency", "output/eda-test/test5.png")
+create_scatter_plot(
+sample_data,
+"alcohol.frequency",
+"heroin.frequency",
+"age",
+"Relationship Between Alcohol and Heroin Frequency Use",
+"Alcohol Median Frequency",
+"Heroin Median Frequency",
+"output/eda-test/test5.png"
+)
 }

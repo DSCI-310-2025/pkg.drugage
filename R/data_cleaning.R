@@ -19,6 +19,8 @@
 #' df <- data.frame(age = c("18", "25"), cocaine = c("0", "-"))
 #' clean_drug_use_data(df)
 clean_drug_use_data <- function(data) {
+  # Bind for R CMD check NOTE about no visible binding for global variables
+  age <- NULL
   data %>%
     dplyr::mutate(
       age = factor(age),
@@ -40,6 +42,9 @@ clean_drug_use_data <- function(data) {
 #' df <- data.frame(age = factor(c("18", "25")))
 #' classify_age_group(df)
 classify_age_group <- function(data) {
+  # Bind for R CMD check NOTE about no visible binding for global variables
+  age <- age_numeric <- NULL
+
   data %>%
     dplyr::mutate(
       age_numeric = as.numeric(as.character(age)),

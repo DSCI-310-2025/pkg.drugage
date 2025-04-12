@@ -56,5 +56,14 @@ sample_data <- data.frame(
  class = c("youth", "adult", "adult"),
  n = c(100, 200, 150)
 )
-create_bar_use_plot(sample_data, "age", "alcohol.use", "Alcohol Use", "Age", "Proportion", "dodgerblue", "output/eda-test/test1.png")
+create_bar_use_plot(
+sample_data,
+"age",
+"alcohol.use",
+"Alcohol Use",
+"Age",
+"Proportion",
+"dodgerblue",
+"output/eda-test/test1.png"
+)
 }

@@ -59,6 +59,8 @@
 #' conf_plot <- create_confusion_outputs(predictions, "decision_tree", output_path)
 #' print(conf_plot)
 create_confusion_outputs <- function(predictions, model_name, output_path) {
+  # Bind for R CMD check NOTE about no visible binding for global variables
+  Prediction <- Reference <- Truth <- Count <- NULL
 
   # Input validation for model_name
   if (is.null(model_name)) {
