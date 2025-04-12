@@ -1,5 +1,5 @@
 #' Drug Use Data EDA Functions:
-#' 
+#'
 #' Functions to run exploratory data analysis on a drug use dataset:
 #' - `create_bar_use_plot()`: Creates a bar plot for substance use.
 #' - `create_bar_freq_plot()`: Creates a bar plot for substance use frequency.
@@ -9,7 +9,7 @@
 
 
 #' Function to create bar plot for substance use
-#' 
+#'
 #' @param data A .csv dataframe containing data to be plotted.
 #' @param x_var A string specifying the x-axis variable.
 #' @param y_var A string specifying the y-axis variable.
@@ -18,14 +18,14 @@
 #' @param y_label A string specifying the y-axis label.
 #' @param fill_color A string specifying the fill color for the bars.
 #' @param output_file A string specifying the output file path for saving the plot.
-#' 
+#'
 #' @return ggplot objects representing the generated plot
-#' 
+#'
 #' @import ggplot2
 #' @import dplyr
-#' 
+#'
 #' @export
-#' 
+#'
 #' @examples
 #' sample_data <- data.frame(
 #'  age = c("18-24", "25-34", "35-44"),
@@ -38,8 +38,8 @@
 #' )
 #' create_bar_use_plot(sample_data, "age", "alcohol.use", "Alcohol Use", "Age", "Proportion", "dodgerblue", "output/eda-test/test1.png")
 create_bar_use_plot <- function(data, x_var, y_var, title, x_label, y_label, fill_color, output_file) {
-  plot <- ggplot(data, aes(x = .data[[x_var]], y = .data[[y_var]])) + 
-    geom_bar(stat = "identity", width = 0.7, fill = fill_color) + 
+  plot <- ggplot(data, aes(x = .data[[x_var]], y = .data[[y_var]])) +
+    geom_bar(stat = "identity", width = 0.7, fill = fill_color) +
     geom_text(aes(label = .data[[y_var]]), vjust = -0.3, color = "grey10", size = 3) +
     labs(title = title, x = x_label, y = y_label) +
     ylim(0, 100) +
@@ -56,7 +56,7 @@ create_bar_use_plot <- function(data, x_var, y_var, title, x_label, y_label, fil
 
 
 #' Create and save frequency bar plots
-#' 
+#'
 #' @param data A .csv dataframe containing data to be plotted.
 #' @param x_var A string specifying the x-axis variable.
 #' @param y_var A string specifying the y-axis variable.
@@ -65,14 +65,14 @@ create_bar_use_plot <- function(data, x_var, y_var, title, x_label, y_label, fil
 #' @param y_label A string specifying the y-axis label.
 #' @param fill_color A string specifying the fill color for the bars.
 #' @param output_file A string specifying the output file path for saving the plot.
-#' 
+#'
 #' @return ggplot objects representing the generated plot
-#' 
+#'
 #' @import ggplot2
 #' @import dplyr
-#' 
+#'
 #' @export
-#' 
+#'
 #' @examples
 #' sample_data <- data.frame(
 #'  age = c("18-24", "25-34", "35-44"),
@@ -85,8 +85,8 @@ create_bar_use_plot <- function(data, x_var, y_var, title, x_label, y_label, fil
 #' )
 #' create_bar_freq_plot(sample_data, "age", "heroin.frequency", "Median Heroin Use Frequency in the Past Year by Age", "Age", "Median Frequency", "salmon", "output/eda-test/test3.png")
 create_bar_freq_plot <- function(data, x_var, y_var, title, x_label, y_label, fill_color, output_file) {
-  plot <- ggplot(data, aes(x = .data[[x_var]], y = .data[[y_var]])) + 
-    geom_bar(stat = "identity", width = 0.7, fill = fill_color) + 
+  plot <- ggplot(data, aes(x = .data[[x_var]], y = .data[[y_var]])) +
+    geom_bar(stat = "identity", width = 0.7, fill = fill_color) +
     geom_text(aes(label = .data[[y_var]]), vjust = -0.3, color = "grey10", size = 3) +
     labs(title = title, x = x_label, y = y_label) +
     scale_y_continuous(
@@ -106,7 +106,7 @@ create_bar_freq_plot <- function(data, x_var, y_var, title, x_label, y_label, fi
 
 
 #' Function to create scatter plot with regression line
-#' 
+#'
 #' @param data A .csv dataframe containing data to be plotted.
 #' @param x_var A string specifying the x-axis variable.
 #' @param y_var A string specifying the y-axis variable.
@@ -115,14 +115,14 @@ create_bar_freq_plot <- function(data, x_var, y_var, title, x_label, y_label, fi
 #' @param y_label A string specifying the y-axis label.
 #' @param color_var A string specifying the color variable for the scatter plot.
 #' @param output_file A string specifying the output file path for saving the plot.
-#' 
+#'
 #' @return ggplot objects representing the generated plot
-#' 
+#'
 #' @import ggplot2
 #' @import dplyr
-#' 
+#'
 #' @export
-#' 
+#'
 #' @examples
 #' sample_data <- data.frame(
 #'  age = c("18-24", "25-34", "35-44"),
@@ -153,17 +153,17 @@ create_scatter_plot <- function(data, x_var, y_var, color_var, title, x_label, y
 
 
 #' Function to aggregate data for youth vs. adult comparison
-#' 
+#'
 #' @param data A .csv dataframe containing data to be aggregated.
-#' 
+#'
 #' @return nothing; but changes the given dataframe.
-#' 
+#'
 #' @import ggplot2
 #' @import dplyr
 #' @import tidyr
-#' 
+#'
 #' @export
-#' 
+#'
 #' @examples
 #' sample_data <- data.frame(
 #'  age = c("18-24", "25-34", "35-44"),
@@ -176,12 +176,15 @@ create_scatter_plot <- function(data, x_var, y_var, color_var, title, x_label, y
 #' )
 #' aggregate_data(sample_data)
 aggregate_data <- function(data) {
+  # Bind for R CMD check NOTE about no visible binding for global variables
+  variable <- value <- NULL
+
   data %>%
     group_by(class) %>%
-    summarise(across(where(is.numeric), ~ weighted.mean(.x, n, na.rm = TRUE), 
+    summarise(across(where(is.numeric), ~ weighted.mean(.x, n, na.rm = TRUE),
                      .names = "mean_{.col}"),
               total_n = sum(n)) %>%
-    pivot_longer(cols = starts_with("mean_"), 
+    pivot_longer(cols = starts_with("mean_"),
                  names_to = "variable", values_to = "value") %>%
     mutate(variable = gsub("mean_", "", variable),
            value = round(value, 2))
@@ -189,20 +192,20 @@ aggregate_data <- function(data) {
 
 
 #' Function to create grouped bar plots
-#' 
+#'
 #' @param data A .csv dataframe containing data to be plotted or aggregated.
 #' @param title A string specifying the plot title.
 #' @param x_label A string specifying the x-axis label.
 #' @param y_label A string specifying the y-axis label.
 #' @param output_file A string specifying the output file path for saving the plot.
-#' 
+#'
 #' @return ggplot objects representing the generated plot.
-#' 
+#'
 #' @import ggplot2
 #' @import dplyr
-#' 
+#'
 #' @export
-#' 
+#'
 #' @examples
 #' sample_aggregated <- data.frame(
 #'  class = c("adult", "adult", "adult", "adult", "adult", "youth", "youth", "youth", "youth", "youth"),

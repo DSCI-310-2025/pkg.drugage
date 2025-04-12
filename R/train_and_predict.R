@@ -49,6 +49,9 @@
 #' predictions <- train_and_predict(model_spec, data_train, data_test, recipe)
 #' head(predictions)
 train_and_predict <- function(model_spec, data_train, data_test, recipe) {
+  # Bind for R CMD check NOTE about no visible binding for global variables
+  predict <- NULL
+
   workflow <- workflow() %>%
     add_recipe(recipe) %>%
     add_model(model_spec)
