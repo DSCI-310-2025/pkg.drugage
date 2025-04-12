@@ -36,7 +36,16 @@
 #'  class = c("youth", "adult", "adult"),
 #'  n = c(100, 200, 150)
 #' )
-#' create_bar_use_plot(sample_data, "age", "alcohol.use", "Alcohol Use", "Age", "Proportion", "dodgerblue", "output/eda-test/test1.png")
+#' create_bar_use_plot(
+#' sample_data,
+#' "age",
+#' "alcohol.use",
+#' "Alcohol Use",
+#' "Age",
+#' "Proportion",
+#' "dodgerblue",
+#' "output/eda-test/test1.png"
+#' )
 create_bar_use_plot <- function(data, x_var, y_var, title, x_label, y_label, fill_color, output_file) {
   plot <- ggplot(data, aes(x = .data[[x_var]], y = .data[[y_var]])) +
     geom_bar(stat = "identity", width = 0.7, fill = fill_color) +
@@ -83,7 +92,16 @@ create_bar_use_plot <- function(data, x_var, y_var, title, x_label, y_label, fil
 #'  class = c("youth", "adult", "adult"),
 #'  n = c(100, 200, 150)
 #' )
-#' create_bar_freq_plot(sample_data, "age", "heroin.frequency", "Median Heroin Use Frequency in the Past Year by Age", "Age", "Median Frequency", "salmon", "output/eda-test/test3.png")
+#' create_bar_freq_plot(
+#' sample_data,
+#' "age",
+#' "heroin.frequency",
+#' "Median Heroin Use Frequency in the Past Year by Age",
+#' "Age",
+#' "Median Frequency",
+#' "salmon",
+#' "output/eda-test/test3.png"
+#' )
 create_bar_freq_plot <- function(data, x_var, y_var, title, x_label, y_label, fill_color, output_file) {
   plot <- ggplot(data, aes(x = .data[[x_var]], y = .data[[y_var]])) +
     geom_bar(stat = "identity", width = 0.7, fill = fill_color) +
@@ -133,7 +151,16 @@ create_bar_freq_plot <- function(data, x_var, y_var, title, x_label, y_label, fi
 #'  class = c("youth", "adult", "adult"),
 #'  n = c(100, 200, 150)
 #' )
-#' create_scatter_plot(sample_data, "alcohol.frequency", "heroin.frequency", "age", "Relationship Between Alcohol and Heroin Frequency Use", "Alcohol Median Frequency", "Heroin Median Frequency", "output/eda-test/test5.png")
+#' create_scatter_plot(
+#' sample_data,
+#' "alcohol.frequency",
+#' "heroin.frequency",
+#' "age",
+#' "Relationship Between Alcohol and Heroin Frequency Use",
+#' "Alcohol Median Frequency",
+#' "Heroin Median Frequency",
+#' "output/eda-test/test5.png"
+#' )
 create_scatter_plot <- function(data, x_var, y_var, color_var, title, x_label, y_label, output_file) {
   plot <- ggplot(data, aes(x = .data[[x_var]], y = .data[[y_var]], color = .data[[color_var]])) +
     geom_point(alpha = 0.8) +
@@ -208,12 +235,24 @@ aggregate_data <- function(data) {
 #'
 #' @examples
 #' sample_aggregated <- data.frame(
-#'  class = c("adult", "adult", "adult", "adult", "adult", "youth", "youth", "youth", "youth", "youth"),
+#'  class = c(
+#'  "adult", "adult", "adult", "adult", "adult",
+#'  "youth", "youth", "youth", "youth", "youth"
+#'  ),
 #'  total_n = c(350, 350, 350, 350, 350, 100, 100, 100, 100, 100),
-#'  variable = c("alcohol-use", "alcohol-frequency", "marijuana-use", "heroin-frequency", "n", "alcohol-use", "alcohol-frequency", "marijuana-use", "heroin-frequency", "n"),
+#'  variable = c(
+#'  "alcohol-use", "alcohol-frequency", "marijuana-use", "heroin-frequency","n",
+#'  "alcohol-use", "alcohol-frequency", "marijuana-use", "heroin-frequency", "n"
+#'  ),
 #'  value = c(68.6, 12.9, 25.7, 2.57, 179., 80, 20, 50, 5, 100)
 #' )
-#' create_grouped_bar_plot(sample_aggregated, "Youth vs. Adult Comparison", "Substance Type", "Mean Substance Use (%)", "output/eda-test/test6.png")
+#' create_grouped_bar_plot(
+#' sample_aggregated,
+#' "Youth vs. Adult Comparison",
+#' "Substance Type",
+#' "Mean Substance Use (%)",
+#' "output/eda-test/test6.png"
+#' )
 create_grouped_bar_plot <- function(data, title, x_label, y_label, output_file) {
   plot <- ggplot(data, aes(x = .data[["variable"]], y = .data[["value"]], fill = class)) +
     geom_bar(stat = "identity", position = "dodge") +

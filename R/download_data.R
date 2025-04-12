@@ -13,7 +13,8 @@
 #'
 #' @examples
 #' if (interactive()) {
-#'   test_url <- "https://raw.githubusercontent.com/rudeboybert/fivethirtyeight/master/data-raw/drug-use-by-age/drug-use-by-age.csv"
+#'   test_url <- paste0("https://raw.githubusercontent.com/rudeboybert/",
+#'   "fivethirtyeight/master/data-raw/drug-use-by-age/drug-use-by-age.csv")
 #'   test_dir <- "data/test"
 #'   download_data(test_url, test_dir)
 #' }
