@@ -15,9 +15,9 @@ jobs:
 
       - name: Install dependencies
         run: |
-          install.packages("remotes")
-          remotes::install_deps(dependencies = TRUE)
-          install.packages("rcmdcheck")
+          Rscript -e "install.packages('remotes')"
+          Rscript -e "remotes::install_deps(dependencies = TRUE)"
+          Rscript -e "install.packages('rcmdcheck')"
 
       - name: Run R CMD check
         run: Rscript -e "rcmdcheck::rcmdcheck(args = '--no-manual', error_on = 'warning')"
@@ -42,9 +42,9 @@ jobs:
 
       - name: Install dependencies
         run: |
-          install.packages("remotes")
-          remotes::install_deps(dependencies = TRUE)
-          install.packages("pkgdown")
+          Rscript -e "install.packages('remotes')"
+          Rscript -e "remotes::install_deps(dependencies = TRUE)"
+          Rscript -e "install.packages('pkgdown')"
 
       - name: Build and deploy pkgdown site
         run: Rscript -e "pkgdown::deploy_to_branch(new_process = FALSE)"
