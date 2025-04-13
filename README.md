@@ -26,6 +26,16 @@ developed with the intention of creating a classificiation model able to
 categorize data into youth vs. adult groups based on the trend of drug
 use/frequency, but its functions can be applied to any similar scenario.
 
+### Table of Contents
+
+- [Ecosystem Context](#ecosystem-context)
+- [Functions in the Package](#functions)
+- [Dependencies](#dependencies)
+- [Installation](#installation)
+- [Example Use](#example)
+- [Code of Conduct](#code-of-conduct)
+- [Licenses](#licenses)
+
 ## Ecosystem Context
 
 In the R ecosystem, `pkg.drugage` complements existing packages such as:
