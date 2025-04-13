@@ -18,9 +18,11 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/DSCI-310-2025/pkg.drugage/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/DSCI-310-2025/pkg.drugage/actions/workflows/R-CMD-check.yaml)
 [![Codecov test coverage](https://codecov.io/gh/DSCI-310-2025/pkg.drugage/graph/badge.svg)](https://app.codecov.io/gh/DSCI-310-2025/pkg.drugage)
+
+[![pkgdown](https://github.com/DSCI-310-2025/pkg.drugage/actions/workflows/pkgdown.yaml/badge.svg)](https://dsci-310-2025.github.io/pkg.drugage/)
 <!-- badges: end -->
 
-The goal of pkg.drugage is to provide functions to streamline the creation of data classification models. This package was originally developed with the intention of creating a classficiation model able to categorize data into youth vs. adult groups based on the trend of drug use/frequency, but its functions can be applied to any similar scenario.
+The goal of `pkg.drugage` is to provide functions to streamline the creation of data classification models. This package was originally developed with the intention of creating a classificiation model able to categorize data into youth vs. adult groups based on the trend of drug use/frequency, but its functions can be applied to any similar scenario.
 
 ## Ecosystem Context
 
@@ -76,29 +78,11 @@ classified_data <- classify_age_group(cleaned_data)
 save_data(classified_data, "data/clean/data-cleaned.csv")
 
 # EDA
-create_bar_use_plot(
-classified_data,
-"age",
-"alcohol.use",
-"Alcohol Use",
-"Age",
-"Proportion",
-"dodgerblue",
-"output/eda-test/test1.png"
-)
+create_bar_use_plot(classified_data,"age","alcohol.use","Alcohol Use","Age","Proportion","dodgerblue","output/eda-test/test1.png")
 
 create_bar_freq_plot(classified_data, "age", "heroin.frequency","Median Heroin Use Frequency in the Past Year by Age", "Age", "Median Frequency", "salmon", "output/eda-test/test3.png")
 
-create_scatter_plot(
-classified_data,
-"alcohol.frequency",
-"heroin.frequency",
-"age",
-"Relationship Between Alcohol and Heroin Frequency Use",
-"Alcohol Median Frequency",
-"Heroin Median Frequency",
-"output/eda-test/test5.png"
-)
+create_scatter_plot(classified_data,"alcohol.frequency","heroin.frequency","age","Relationship Between Alcohol and Heroin Frequency Use","Alcohol Median Frequency","Heroin Median Frequency","output/eda-test/test5.png")
 ```
 
 ## Licenses
