@@ -29,6 +29,6 @@ Suggests:
     knitr,
     rmarkdown
 Config/testthat/edition: 3
-URL: https://github.com/DSCI-310-2025/pkg.drugage
+URL: https://DSCI-310-2025.github.io/pkg.drugage
 BugReports: https://github.com/DSCI-310-2025/pkg.drugage/issues
 VignetteBuilder: knitr
