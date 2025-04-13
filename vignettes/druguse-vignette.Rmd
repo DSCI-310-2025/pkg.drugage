@@ -1,0 +1,159 @@
+---
+title: "pkg.druguse Vignette: Classification of Age Groups Based on Drug Use Patterns"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{druguse-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(pkg.drugage)
+```
+
+```{r echo=FALSE, warnings=FALSE, message=FALSE}
+# Additional supporting packages used below
+library(parsnip)
+library(recipes)
+library(workflows)
+library(rsample)
+library(dplyr)
+library(readr)
+library(tidyr)
+```
+
+# Introduction
+The `pkg.druguse` package provides tools to streamline the process of binary classification based on drug use/frequency trends. It provides modular functions for:
+- Data Downloading and Preparation: Obtaining the data from its original source and saving it to the project repository
+- Data Cleaning and Transformation: Preparing the data for analysis
+- Exploratory Data Analysis (EDA): Visualizations of pre-processed data
+- Model Training and Prediction: Trials with decision tree, KNN regression and logistic regression models to find the most appropriate way of analyzing our data
+- Model evaluation via confusion matrices: Methodology to test how well our models are able to perform binary classification on test data given the training data
+
+This vignette demonstrates the workflow using the _Drug Use by Age_ dataset, where we:
+1. Converted character -> numeric columns so that the data could be analyzed, and aggregated the groups to expand on the dataset (as it was quite small)
+2. Used age as a binary target; individuals would be categorized either as youth or adult
+
+## Read Data
+
+We downloaded the dataset by retrieving it from a URL, and saving it locally in the `data/raw/` directory.
+
+```{r, echo=FALSE}
+url <- "https://raw.githubusercontent.com/rudeboybert/fivethirtyeight/refs/heads/master/data-raw/drug-use-by-age/drug-use-by-age.csv"
+destination <- "data/raw/"
+
+create_directory(destination)
+download_data(url, destination)
+data <- read.csv(file.path(destination, "drug-use-by-age.csv"))
+```
+
+## Data Cleaning & Transformation
+
+The dataset underwent preprocessing steps using two vital functions:
+- `clean_drug_use_data()` - standardizes variable types and handles missing values
+- `classify_age_group()` - adds a 'youth'/'adult' classification via an additional column; youth being ≤ 20 and adults being > 20.
+
+```{r, echo=FALSE}
+data_clean <- clean_drug_use_data(data)
+# Create new class column that indicates age groups
+data_transformed <- classify_age_group(data_clean)
+```
+
+## EDA
+
+Since we aim to predict age category using drug use patterns, we performed some exploratory data analysis (EDA) to gain a better understanding of our dataset. Insights into drug use patterns were visualized using our bar and scatter plot functions:
+
+```{r, echo=FALSE}
+# Alcohol and marijuana use by age
+plot_alc <- create_bar_use_plot(data_transformed, "age", "alcohol.use", "Alcohol Consumption in the Past Year by Age", "Age", "Proportion of respondents (%)", "dodgerblue", "output/eda/eda-alcohol.png")
+plot_mar <- create_bar_use_plot(data_transformed, "age", "marijuana.use", "Marijuana Consumption in the Past Year by Age", "Age", "Proportion of respondents (%)", "forestgreen", "output/eda/eda-marijuana.png")
+
+# Heroin frequency and relationships between substances
+plot_her <- create_bar_freq_plot(data_transformed, "age", "heroin.frequency", "Median Heroin Use Frequency in the Past Year by Age", "Age", "Median Frequency", "salmon", "output/eda/eda-heroin.png")
+plot_her_mar <- create_scatter_plot(data_transformed, "heroin.frequency", "marijuana.frequency", "age", "Relationship Between Heroin and Marijuana Frequency Use", "Heroin Median Frequency", "Marijuana Median Frequency", "output/eda/eda-heroin-marijuana.png")
+```
+
+To compare drug use across age groups, we aggregate the data:
+
+```{r, echo=FALSE}
+data_long <- aggregate_data(data_transformed)
+
+plot_all_use <- create_grouped_bar_plot(
+  filter(data_long, grepl("use", variable)),
+  "Youth vs. Adult: Substance Use", "Substance Type", "Mean Substance Use (%)", "output/eda/eda-all-use.png")
+
+plot_all_freq <- create_grouped_bar_plot(
+  filter(data_long, grepl("frequency", variable)),
+  "Youth vs. Adult: Substance Use Frequency", "Substance Type", "Mean Frequency of Group per Year", "output/eda/eda-all-freq.png")
+```
+
+
+## Analysis
+
+First, since we are doing prediction, we did a train/test split on our data. 
+This way, we can test and compare our models' ability to predict accurately.
+
+We chose to run three different models on our data: 
+
+1. A Decision tree model
+2. K-Nearest-Neighbors (KNN) Regression
+3. Logistic Regression
+
+```{r, echo=FALSE}
+set.seed(123)
+
+create_directory("output/results")
+
+# Prepare data
+data <- data_transformed %>%
+  select(-n, -age) %>%
+  mutate(class = as.factor(class)) # Convert class to a factor variable
+
+data_split <- initial_split(data, strata = class)
+data_train <- training(data_split)
+data_test <- testing(data_split)
+
+recipe <- recipe(class ~ ., data = data_train) %>%
+  step_normalize(all_numeric_predictors())
+
+# Define models
+knn_spec <- nearest_neighbor(weight_func = "rectangular", neighbors = 5) %>%
+  set_engine("kknn") %>%
+  set_mode("classification")
+
+log_reg_spec <- logistic_reg(mode = "classification") %>%
+  set_engine("glm")
+
+tree_spec <- decision_tree() %>%
+  set_engine("rpart") %>%
+  set_mode("classification")
+
+# Train and evaluate each model
+model_specs <- list(
+  knn = knn_spec,
+  logistic_regression = log_reg_spec,
+  decision_tree = tree_spec
+)
+
+for (model_name in names(model_specs)) {
+  model_spec <- model_specs[[model_name]]
+
+  # Train and get predictions
+  predictions <- train_and_predict(model_spec, data_train, data_test, recipe)
+
+  # Create confusion matrix outputs
+  conf_plot <- create_confusion_outputs(predictions, model_name, "output/results")
+}
+```
+
+
+# Conclusion
+
+The `pkg.druguse` package is a lightweight toolset for building classification models, particularly in social science and public health contexts involving behavioral data. It has been designed to simplify the steps in binary classification, from EDA and preprocessing to model training and evaluation. This vignette demonstrates its capabilities using the _Drug Use by Age_ dataset, but the package can be extended to real-world classification tasks.
