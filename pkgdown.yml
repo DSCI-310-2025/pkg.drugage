@@ -3,4 +3,7 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   druguse-vignette: druguse-vignette.html
-last_built: 2025-04-13T06:29Z
+last_built: 2025-04-13T06:56Z
+urls:
+  reference: https://DSCI-310-2025.github.io/pkg.drugage/reference
+  article: https://DSCI-310-2025.github.io/pkg.drugage/articles
