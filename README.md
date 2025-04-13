@@ -79,15 +79,23 @@ scenarios.
 
 **R Dependencies**
 
-- `docopt`: 0.7.1
-- `dplyr`: 1.1.4
-- `parsnip`: 1.3.1
-- `pointblank`: 0.12.2
-- `readr`: 2.1.5
-- `recipes`: 1.1.1
-- `rsample`: 1.2.1
-- `tidyr`: 1.3.1
-- `workflows`: 1.2.0
+- `caret`
+- `dplyr`
+- `ggplot2`
+- `parsnip`
+- `readr`
+- `recipes`
+- `tibble`
+- `tidymodels`
+- `tidyr`
+- `utils`
+- `workflows`
+
+These packages are not required for the core functionality but are used in testing and documentation:
+
+- `rsample` – for data splitting and resampling
+- `testthat (>= 3.0.0)` – for unit testing
+- `knitr` and `rmarkdown` – for rendering documentation and vignettes
 
 These dependencies will be automatically installed when running
 `pak::pak("DSCI-310-2025/pkg.drugage")` to install the package.
