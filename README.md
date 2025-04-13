@@ -61,13 +61,15 @@ You can install the development version of pkg.drugage from
 [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("pak")
+install.packages("pak")
+
 pak::pak("DSCI-310-2025/pkg.drugage")
 ```
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+The following is a basic example which shows you how to use some of the
+functions:
 
 ``` r
 library(pkg.drugage)
@@ -83,12 +85,38 @@ download_data(
 cleaned_data <- clean_drug_use("data/raw/drug-use-by-age.csv")
 classified_data <- classify_age_group(cleaned_data)
 
+# Save cleaned data
 save_data(classified_data, "data/clean/data-cleaned.csv")
+
+# EDA
+create_bar_use_plot(
+classified_data,
+"age",
+"alcohol.use",
+"Alcohol Use",
+"Age",
+"Proportion",
+"dodgerblue",
+"output/eda-test/test1.png"
+)
+
+create_bar_freq_plot(classified_data, "age", "heroin.frequency","Median Heroin Use Frequency in the Past Year by Age", "Age", "Median Frequency", "salmon", "output/eda-test/test3.png")
+
+create_scatter_plot(
+classified_data,
+"alcohol.frequency",
+"heroin.frequency",
+"age",
+"Relationship Between Alcohol and Heroin Frequency Use",
+"Alcohol Median Frequency",
+"Heroin Median Frequency",
+"output/eda-test/test5.png"
+)
 ```
 
-## License
+## Licenses
 
-This project is dual-licensed under the following licenses:
+This project is dual-licensed under the following:
 
 - **[Creative Commons Zero v1.0 Universal (CC0
   1.0)](https://creativecommons.org/publicdomain/zero/1.0/)** You can
