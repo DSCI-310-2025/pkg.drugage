@@ -65,10 +65,33 @@ scenarios.
   the specified output directory. Returns the ggplot object used to
   create the plot.
 
+## Dependencies
+
+**R Dependencies**
+
+- `docopt`: 0.7.1
+- `dplyr`: 1.1.4
+- `parsnip`: 1.3.1
+- `pointblank`: 0.12.2
+- `readr`: 2.1.5
+- `recipes`: 1.1.1
+- `rsample`: 1.2.1
+- `tidyr`: 1.3.1
+- `workflows`: 1.2.0
+
+These dependencies will be automatically installed when running
+`pak::pak("DSCI-310-2025/pkg.drugage")` to install the package.
+
 ## Installation
 
 You can install the development version of pkg.drugage from
 [GitHub](https://github.com/) with:
+
+``` r
+install.packages("pak")
+
+pak::pak("DSCI-310-2025/pkg.drugage")
+```
 
 Then load the package:
 
@@ -84,7 +107,7 @@ functions:
 ``` r
 library(pkg.drugage)
 
-# can be shown with sample data
+# create sample data
 sample_data <- data.frame(
  age = c("18-24", "25-34", "35-44"),
  alcohol.use = c(80, 75, 60),
@@ -131,6 +154,12 @@ sample_aggregated,
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-2.png" width="60%" height="60%" />
+
+## Code of Conduct
+
+Please note that `pkg.drugage` is released with a [Code of
+Conduct](https://dsci-310-2025.github.io/pkg.drugage/CODE_OF_CONDUCT.md).
+By contributing to this project, you agree to abide by its terms.
 
 ## Licenses
 
