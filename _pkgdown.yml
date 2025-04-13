@@ -1,0 +1,25 @@
+url: https://DSCI-310-2025.github.io/pkg.drugage
+home:
+  title: "pkg.druguse"
+  tagline: "The pkg.drugage package provides an end-to-end workflow for downloading, cleaning, exploring, and analyzing data from surveys related to drug use and health. It includes functions for directory creation, data cleaning, data downloading, exploratory data analysis (EDA), CSV data loading, and model training and evaluation. Designed to streamline the analysis of large-scale survey data, this package integrates popular R packages like caret, dplyr, and workflows for efficient handling of data preprocessing, modeling, and evaluation."
+  
+template:
+  bootstrap: 5
+  bootswatch: cerulean
+
+navbar:
+  title: "pkg.drugage"
+  type: default
+  left:
+    - text: "Reference"
+      href: reference/index.html
+    - text: "Articles"
+      href: articles/index.html
+    - text: "GitHub"
+      href: https://github.com/DSCI-310-2025/pkg.drugage.git
+
+articles:
+  - title: "Drug Use Vignette"
+    contents:
+      - druguse-vignette
+
