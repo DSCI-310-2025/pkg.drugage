@@ -1,5 +1,6 @@
 pandoc: 3.1.11
 pkgdown: 2.1.1
 pkgdown_sha: ~
-articles: {}
-last_built: 2025-04-13T05:54Z
+articles:
+  druguse-vignette: druguse-vignette.html
+last_built: 2025-04-13T06:29Z
