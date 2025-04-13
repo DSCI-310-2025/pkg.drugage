@@ -21,7 +21,8 @@ Imports:
     ggplot2,
     tibble,
     tidyr,
-    tidymodels
+    tidymodels,
+    kknn
 Suggests: 
     testthat (>= 3.0.0),
     rsample,
