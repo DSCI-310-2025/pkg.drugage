@@ -9,7 +9,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "60%",
+  out.height = "60%"
 )
 ```
 
@@ -100,6 +101,16 @@ sample_data,
 "Proportion",
 "dodgerblue",
 "man/figures/README-test1.png")
+
+sample_aggregated <- aggregate_data(sample_data)
+
+create_grouped_bar_plot(
+sample_aggregated,
+"Youth vs. Adult Comparison",
+"Substance Type",
+"Mean Substance Use (%)",
+"man/figures/README-test6.png"
+)
 ```
 
 

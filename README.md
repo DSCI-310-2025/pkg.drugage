@@ -115,7 +115,22 @@ sample_data,
 "man/figures/README-test1.png")
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="60%" height="60%" />
+
+``` r
+
+sample_aggregated <- aggregate_data(sample_data)
+
+create_grouped_bar_plot(
+sample_aggregated,
+"Youth vs. Adult Comparison",
+"Substance Type",
+"Mean Substance Use (%)",
+"man/figures/README-test6.png"
+)
+```
+
+<img src="man/figures/README-unnamed-chunk-4-2.png" width="60%" height="60%" />
 
 ## Licenses
 
