@@ -2,33 +2,38 @@ Package: pkg.drugage
 Title: Package Workflow for Analysis
 Version: 0.0.0.9000
 Authors@R: 
-    person("Jade", "Chen", , "jadeeechen@gmail.com", role = c("aut", "cre"))
-    person("Jessica", "Luo", , "jessicaluo24@gmail.com", role = c("aut", "cre"))
-    person("Heidi", "Lantz", , "heidilantz22@gmail.com", role = c("aut", "cre"))
     person("Nazia", "Edroos", , "edroosnazia@gmail.com", role = c("aut", "cre"))
-Description: The pkg.drugage package provides an end-to-end workflow for downloading, cleaning, exploring, and analyzing data from surveys related to drug use and health. It includes functions for directory creation, data cleaning, data downloading, exploratory data analysis (EDA), CSV data loading, and model training and evaluation. Designed to streamline the analysis of large-scale survey data, this package integrates popular R packages like caret, dplyr, and workflows for efficient handling of data preprocessing, modeling, and evaluation.
+Description: The pkg.drugage package provides an end-to-end workflow for
+    downloading, cleaning, exploring, and analyzing data from surveys
+    related to drug use and health. It includes functions for directory
+    creation, data cleaning, data downloading, exploratory data analysis
+    (EDA), CSV data loading, and model training and evaluation. Designed
+    to streamline the analysis of large-scale survey data, this package
+    integrates popular R packages like caret, dplyr, and workflows for
+    efficient handling of data preprocessing, modeling, and evaluation.
 License: MIT + file LICENSE
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+URL: https://github.com/DSCI-310-2025/pkg.drugage
+BugReports: https://github.com/DSCI-310-2025/pkg.drugage/issues
 Imports: 
     caret,
     dplyr,
+    ggplot2,
     parsnip,
     readr,
     recipes,
-    workflows,
-    ggplot2,
     tibble,
-    tidyr,
     tidymodels,
-    kknn
+    tidyr,
+    utils,
+    workflows
 Suggests: 
-    testthat (>= 3.0.0),
-    rsample,
     knitr,
-    rmarkdown
+    rmarkdown,
+    rsample,
+    testthat (>= 3.0.0)
+VignetteBuilder: 
+    knitr
 Config/testthat/edition: 3
-URL: https://github.com/DSCI-310-2025/pkg.drugage
-BugReports: https://github.com/DSCI-310-2025/pkg.drugage/issues
-VignetteBuilder: knitr
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
