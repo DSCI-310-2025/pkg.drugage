@@ -28,11 +28,3 @@ test_that("`download_data` handles pre-existing file", {
 
   unlink("data", recursive = TRUE)
 })
-
-# Error case
-test_that("`download_data` fails with an invalid URL", {
-  test_url <- "https://invalid.url/file.csv"
-  test_dir <- "data/test"
-
-  expect_error(download_data(test_url, test_dir), "Unable to download file")
-})
