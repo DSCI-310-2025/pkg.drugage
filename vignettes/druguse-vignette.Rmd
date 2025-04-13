@@ -25,7 +25,6 @@ library(recipes)
 library(workflows)
 library(rsample)
 library(dplyr)
-library(docopt)
 library(readr)
 library(tidyr)
 ```
