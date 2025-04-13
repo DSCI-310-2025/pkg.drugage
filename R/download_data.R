@@ -20,15 +20,8 @@
 #' }
 download_data <- function(url, destination) {
   create_directory(dirname(destination))
-
-  # Attempt to download the file and catch errors
-  tryCatch({
-    utils::download.file(url, file.path(destination, "drug-use-by-age.csv"), quiet = TRUE)
-    message("File downloaded successfully to ", destination)
-    return(TRUE)
-  }, error = function(e) {
-    stop("Error: Unable to download file from ", url)
-  }, warning = function(w) {
-    stop("Warning: Unable to download file from ", url)
-  })
+  utils::download.file(
+    url, file.path(destination, "drug-use-by-age.csv"), quiet = TRUE
+  )
+  message("File downloaded successfully to ", destination)
 }
