@@ -5,16 +5,16 @@ test_that("create_directory creates a directory", {
   test_dir <- "data/test_dir"
   create_directory(test_dir)
   expect_true(dir.exists(test_dir))
-  unlink(test_dir, recursive = TRUE)  # Cleanup
+  unlink(test_dir, recursive = TRUE)
 })
 
 # Edge case
 test_that("create_directory handles existing directory", {
   test_dir <- "data/test_dir"
   dir.create(test_dir, recursive = TRUE)
-  create_directory(test_dir)  # Should not fail
+  create_directory(test_dir) 
   expect_true(dir.exists(test_dir))
-  unlink(test_dir, recursive = TRUE)  # Cleanup
+  unlink(test_dir, recursive = TRUE)
 })
 
 # Error case
