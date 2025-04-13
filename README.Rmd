@@ -18,8 +18,12 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/DSCI-310-2025/pkg.drugage/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/DSCI-310-2025/pkg.drugage/actions/workflows/R-CMD-check.yaml)
 [![Codecov test coverage](https://codecov.io/gh/DSCI-310-2025/pkg.drugage/graph/badge.svg)](https://app.codecov.io/gh/DSCI-310-2025/pkg.drugage)
-
 [![pkgdown](https://github.com/DSCI-310-2025/pkg.drugage/actions/workflows/pkgdown.yaml/badge.svg)](https://dsci-310-2025.github.io/pkg.drugage/)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: CC0](https://img.shields.io/badge/License-CC0-lightgrey.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
+[![R version](https://img.shields.io/badge/R-%3E%3D4.0.0-blue)](https://github.com/DSCI-310-2025/pkg.drugage/blob/main/DESCRIPTION)
+[![Dev version](https://img.shields.io/badge/dev%20version-1.0.0-brightgreen)](https://github.com/DSCI-310-2025/pkg.drugage)
 <!-- badges: end -->
 
 The goal of `pkg.drugage` is to provide functions to streamline the creation of data classification models. This package was originally developed with the intention of creating a classificiation model able to categorize data into youth vs. adult groups based on the trend of drug use/frequency, but its functions can be applied to any similar scenario.
@@ -50,7 +54,7 @@ Unlike broader frameworks, `pkg.drugage` prioritizes accessibility, domain focus
 You can install the development version of pkg.drugage from
 [GitHub](https://github.com/) with:
 
-```{r}
+```{r, include=FALSE}
 install.packages("pak")
 
 pak::pak("DSCI-310-2025/pkg.drugage")
@@ -68,7 +72,7 @@ library(pkg.drugage)
 The following is a basic example which shows you how to use some of the functions:
 
 
-```{r}
+```{r, warning=FALSE}
 library(pkg.drugage)
 
 # can be shown with sample data
@@ -81,11 +85,10 @@ sample_data <- data.frame(
  class = c("youth", "adult", "adult"),
  n = c(100, 200, 150))
  
-
-
 # Clean data
 cleaned_data <- clean_drug_use_data(sample_data)
 classified_data <- classify_age_group(cleaned_data)
+head(classified_data)
 
 # EDA
 create_bar_use_plot(
