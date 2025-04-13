@@ -50,36 +50,28 @@ Unlike broader frameworks, `pkg.drugage` prioritizes accessibility, domain focus
 You can install the development version of pkg.drugage from
 [GitHub](https://github.com/) with:
 
-``` r
+```{r}
 install.packages("pak")
 
 pak::pak("DSCI-310-2025/pkg.drugage")
 ```
 
+Then load the package:
+
+```{r}
+library(pkg.drugage)
+```
+
+
 ## Example
 
 The following is a basic example which shows you how to use some of the functions:
 
-``` r
+
+```{r}
 library(pkg.drugage)
 
-# Downloading data and preparing for cleaning
-create_directory("data/raw")
-download_data(
-  url = "https://raw.githubusercontent.com/rudeboybert/fivethirtyeight/refs/heads/master/data-raw/drug-use-by-age/drug-use-by-age.csv",
-  dest = "data/raw"
-)
-
-# Clean data
-cleaned_data <- clean_drug_use("data/raw/drug-use-by-age.csv")
-classified_data <- classify_age_group(cleaned_data)
-
-# Save cleaned data
-save_data(classified_data, "data/clean/data-cleaned.csv")
-
-# EDA
 # can be shown with sample data
-
 sample_data <- data.frame(
  age = c("18-24", "25-34", "35-44"),
  alcohol.use = c(80, 75, 60),
@@ -89,6 +81,13 @@ sample_data <- data.frame(
  class = c("youth", "adult", "adult"),
  n = c(100, 200, 150))
  
+
+
+# Clean data
+cleaned_data <- clean_drug_use_data(sample_data)
+classified_data <- classify_age_group(cleaned_data)
+
+# EDA
 create_bar_use_plot(
 sample_data,
 "age",
@@ -97,12 +96,9 @@ sample_data,
 "Age",
 "Proportion",
 "dodgerblue",
-"man/figures/README-test1.png"
-)
-
-
-
+"man/figures/README-test1.png")
 ```
+
 
 ## Licenses
 
