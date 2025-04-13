@@ -67,7 +67,21 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>The goal of pkg.drugage is to provide functions to streamline the creation of data classification models. This package was originally developed with the intention of creating a classficiation model able to categorize data into youth vs. adult groups based on the trend of drug use/frequency, but its functions can be applied to any similar scenario.</p>
+<p><a href="https://opensource.org/licenses/MIT" class="external-link"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a> <a href="https://creativecommons.org/publicdomain/zero/1.0/" class="external-link"><img src="https://img.shields.io/badge/License-CC0-lightgrey.svg" alt="License: CC0"></a> <a href="https://github.com/DSCI-310-2025/pkg.drugage/blob/main/DESCRIPTION" class="external-link"><img src="https://img.shields.io/badge/R-%3E%3D4.0.0-blue" alt="R version"></a> <a href="https://github.com/DSCI-310-2025/pkg.drugage" class="external-link"><img src="https://img.shields.io/badge/dev%20version-1.0.0-brightgreen" alt="Dev version"></a> <!-- badges: end --></p>
+<p>The goal of <code>pkg.drugage</code> is to provide functions to streamline the creation of data classification models. This package was originally developed with the intention of creating a classificiation model able to categorize data into youth vs. adult groups based on the trend of drug use/frequency, but its functions can be applied to any similar scenario.</p>
+<div class="section level3">
+<h3 id="table-of-contents">Table of Contents<a class="anchor" aria-label="anchor" href="#table-of-contents"></a>
+</h3>
+<ul>
+<li><a href="#ecosystem-context">Ecosystem Context</a></li>
+<li><a href="#functions">Functions in the Package</a></li>
+<li><a href="#dependencies">Dependencies</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#example">Example Use</a></li>
+<li><a href="#code-of-conduct">Code of Conduct</a></li>
+<li><a href="#licenses">Licenses</a></li>
+</ul>
+</div>
 <div class="section level2">
 <h2 id="ecosystem-context">Ecosystem Context<a class="anchor" aria-label="anchor" href="#ecosystem-context"></a>
 </h2>
@@ -101,37 +115,102 @@
 </ul>
 </div>
 <div class="section level2">
+<h2 id="dependencies">Dependencies<a class="anchor" aria-label="anchor" href="#dependencies"></a>
+</h2>
+<p><strong>R Dependencies</strong></p>
+<ul>
+<li>
+<code>docopt</code>: 0.7.1</li>
+<li>
+<code>dplyr</code>: 1.1.4</li>
+<li>
+<code>parsnip</code>: 1.3.1</li>
+<li>
+<code>pointblank</code>: 0.12.2</li>
+<li>
+<code>readr</code>: 2.1.5</li>
+<li>
+<code>recipes</code>: 1.1.1</li>
+<li>
+<code>rsample</code>: 1.2.1</li>
+<li>
+<code>tidyr</code>: 1.3.1</li>
+<li>
+<code>workflows</code>: 1.2.0</li>
+</ul>
+<p>These dependencies will be automatically installed when running <code>pak::pak("DSCI-310-2025/pkg.drugage")</code> to install the package.</p>
+</div>
+<div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>You can install the development version of pkg.drugage from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"pak"</span><span class="op">)</span></span>
+<span></span>
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"DSCI-310-2025/pkg.drugage"</span><span class="op">)</span></span></code></pre></div>
+<p>Then load the package:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/DSCI-310-2025/pkg.drugage" class="external-link">pkg.drugage</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
-<p>This is a basic example which shows you how to solve a common problem:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<p>The following is a basic example which shows you how to use some of the functions:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/DSCI-310-2025/pkg.drugage" class="external-link">pkg.drugage</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Downloading data and preparing for cleaning</span></span>
-<span><span class="fu"><a href="reference/create_directory.html">create_directory</a></span><span class="op">(</span><span class="st">"data/raw"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="reference/download_data.html">download_data</a></span><span class="op">(</span></span>
-<span>  url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/rudeboybert/fivethirtyeight/refs/heads/master/data-raw/drug-use-by-age/drug-use-by-age.csv"</span>,</span>
-<span>  dest <span class="op">=</span> <span class="st">"data/raw"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
+<span><span class="co"># create sample data</span></span>
+<span><span class="va">sample_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span> age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"18-24"</span>, <span class="st">"25-34"</span>, <span class="st">"35-44"</span><span class="op">)</span>,</span>
+<span> alcohol.use <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">80</span>, <span class="fl">75</span>, <span class="fl">60</span><span class="op">)</span>,</span>
+<span> alcohol.frequency <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">15</span>, <span class="fl">10</span><span class="op">)</span>,</span>
+<span> marijuana.use <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">30</span>, <span class="fl">20</span><span class="op">)</span>,</span>
+<span> heroin.frequency <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">3</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span> class <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"youth"</span>, <span class="st">"adult"</span>, <span class="st">"adult"</span><span class="op">)</span>,</span>
+<span> n <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">200</span>, <span class="fl">150</span><span class="op">)</span><span class="op">)</span></span>
+<span> </span>
 <span><span class="co"># Clean data</span></span>
-<span><span class="va">cleaned_data</span> <span class="op">&lt;-</span> <span class="fu">clean_drug_use</span><span class="op">(</span><span class="st">"data/raw/drug-use-by-age.csv"</span><span class="op">)</span></span>
+<span><span class="va">cleaned_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/clean_drug_use_data.html">clean_drug_use_data</a></span><span class="op">(</span><span class="va">sample_data</span><span class="op">)</span></span>
 <span><span class="va">classified_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/classify_age_group.html">classify_age_group</a></span><span class="op">(</span><span class="va">cleaned_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">classified_data</span><span class="op">)</span></span>
+<span><span class="co">#&gt;     age alcohol.use alcohol.frequency marijuana.use heroin.frequency class   n</span></span>
+<span><span class="co">#&gt; 1 18-24          80                20            50                5 adult 100</span></span>
+<span><span class="co">#&gt; 2 25-34          75                15            30                3 adult 200</span></span>
+<span><span class="co">#&gt; 3 35-44          60                10            20                2 adult 150</span></span>
 <span></span>
-<span><span class="fu"><a href="reference/save_data.html">save_data</a></span><span class="op">(</span><span class="va">classified_data</span>, <span class="st">"data/clean/data-cleaned.csv"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co"># EDA</span></span>
+<span><span class="fu"><a href="reference/create_bar_use_plot.html">create_bar_use_plot</a></span><span class="op">(</span></span>
+<span><span class="va">sample_data</span>,</span>
+<span><span class="st">"age"</span>,</span>
+<span><span class="st">"alcohol.use"</span>,</span>
+<span><span class="st">"Alcohol Use"</span>,</span>
+<span><span class="st">"Age"</span>,</span>
+<span><span class="st">"Proportion"</span>,</span>
+<span><span class="st">"dodgerblue"</span>,</span>
+<span><span class="st">"man/figures/README-test1.png"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-4-1.png" width="60%" height="60%"></p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">sample_aggregated</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/aggregate_data.html">aggregate_data</a></span><span class="op">(</span><span class="va">sample_data</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/create_grouped_bar_plot.html">create_grouped_bar_plot</a></span><span class="op">(</span></span>
+<span><span class="va">sample_aggregated</span>,</span>
+<span><span class="st">"Youth vs. Adult Comparison"</span>,</span>
+<span><span class="st">"Substance Type"</span>,</span>
+<span><span class="st">"Mean Substance Use (%)"</span>,</span>
+<span><span class="st">"man/figures/README-test6.png"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-4-2.png" width="60%" height="60%"></p>
 </div>
 <div class="section level2">
-<h2 id="license">License<a class="anchor" aria-label="anchor" href="#license"></a>
+<h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
 </h2>
-<p>This project is dual-licensed under the following licenses:</p>
+<p>Please note that <code>pkg.drugage</code> is released with a <a href="https://dsci-310-2025.github.io/pkg.drugage/CODE_OF_CONDUCT.md" class="external-link">Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+</div>
+<div class="section level2">
+<h2 id="licenses">Licenses<a class="anchor" aria-label="anchor" href="#licenses"></a>
+</h2>
+<p>This project is dual-licensed under the following:</p>
 <ul>
 <li><p><strong><a href="https://creativecommons.org/publicdomain/zero/1.0/" class="external-link">Creative Commons Zero v1.0 Universal (CC0 1.0)</a></strong> You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.</p></li>
 <li><p><strong><a href="LICENSE.html">MIT License</a></strong><br>
@@ -186,6 +265,7 @@ A short and permissive software license. You can use it in proprietary software 
 <ul class="list-unstyled">
 <li><a href="https://github.com/DSCI-310-2025/pkg.drugage/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/DSCI-310-2025/pkg.drugage/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://app.codecov.io/gh/DSCI-310-2025/pkg.drugage" class="external-link"><img src="https://codecov.io/gh/DSCI-310-2025/pkg.drugage/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://dsci-310-2025.github.io/pkg.drugage/" class="external-link"><img src="https://github.com/DSCI-310-2025/pkg.drugage/actions/workflows/pkgdown.yaml/badge.svg" alt="pkgdown"></a></li>
 </ul>
 </div>
 
